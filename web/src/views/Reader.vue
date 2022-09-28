@@ -7,6 +7,7 @@
       day: !isNight,
       'mini-interface': $store.state.miniInterface
     }"
+   
     ref="chapterWrapperRef"
   >
     <div class="tool-bar" :style="leftBarTheme">
@@ -400,6 +401,25 @@
       </div>
       <div class="top-bar" ref="top">
         {{ $store.state.miniInterface ? title : "" }}
+        /**
+ * 获取当前时间
+ * 格式YYYY-MM-DD
+ */
+Vue.prototype.getNowFormatDate = function() {
+  var date = new Date();
+  var seperator1 = "-";
+  var year = date.getFullYear();
+  var month = date.getMonth() + 1;
+  var strDate = date.getDate();
+  if (month >= 1 && month <= 9) {
+    month = "0" + month;
+  }
+  if (strDate >= 0 && strDate <= 9) {
+    strDate = "0" + strDate;
+  }
+  var currentdate = year + seperator1 + month + seperator1 + strDate;
+  return currentdate;
+};
       </div>
       <div
         class="content"
